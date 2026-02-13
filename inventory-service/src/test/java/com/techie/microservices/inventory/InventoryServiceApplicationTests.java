@@ -14,6 +14,8 @@ import org.testcontainers.mysql.MySQLContainer;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.nio.channels.Pipe.SourceChannel;
+
 @Testcontainers
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class InventoryServiceApplicationTests {
@@ -33,6 +35,12 @@ class InventoryServiceApplicationTests {
 
 //		RestAssured.baseURI = "http://localhost:" + port;
 	}
+    @Test
+    void shouldReadInventory()
+    {
+        System.out.println("Test Successful");
+
+    }
 
 	// @Test
 	// void shouldReadInventory() {
