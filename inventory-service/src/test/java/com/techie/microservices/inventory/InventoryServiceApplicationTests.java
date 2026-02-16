@@ -32,33 +32,25 @@ class InventoryServiceApplicationTests {
 	void setup() {
 		RestAssured.baseURI = "http://localhost";
 		RestAssured.port = port;
-
-//		RestAssured.baseURI = "http://localhost:" + port;
 	}
-    @Test
-    void shouldReadInventory()
-    {
-        System.out.println("Test Successful");
 
-    }
+	 @Test
+	 void shouldReadInventory() {
+	 	System.out.println("PORT = " + port);
+	 	var response = RestAssured.given()
+	 			.when()
+	 			.get("/api/inventory?skuCode=iphone_14&quantity=11")
+	 			.then()
+	 			.statusCode(200)
+	 			.extract().as(Boolean.class);
+	 	assertTrue(response);
 
-	// @Test
-	// void shouldReadInventory() {
-	// 	System.out.println("PORT = " + port);
-	// 	var response = RestAssured.given()
-	// 			.when()
-	// 			.get("/api/inventory?skuCode=iphone_14&quantity=11")
-	// 			.then()
-	// 			.statusCode(200)
-	// 			.extract().as(Boolean.class);
-	// 	assertTrue(response);
-
-	// 	var negativeResponse = RestAssured.given()
-	// 			.when()
-	// 			.get("/api/inventory?skuCode=iphone_14&quantity=110")
-	// 			.then()
-	// 			.statusCode(200)
-	// 			.extract().as(Boolean.class);
-	// 	assertFalse(negativeResponse);
-	// }
+	 	var negativeResponse = RestAssured.given()
+	 			.when()
+	 			.get("/api/inventory?skuCode=iphone_14&quantity=110")
+	 			.then()
+	 			.statusCode(200)
+	 			.extract().as(Boolean.class);
+	 	assertFalse(negativeResponse);
+	 }
 }
